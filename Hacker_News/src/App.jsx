@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
+import NavBar from './NavList';
 
 function App() {
   const [topStories, setTopStories] = useState([]);
@@ -36,6 +38,7 @@ function App() {
 
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px' }}>
+      <NavBar />
       <h1>Hacker News Top Stories</h1>
       <ul style={{ listStyleType: 'none', padding: 0 }}>
         {topStories.map(story => (
