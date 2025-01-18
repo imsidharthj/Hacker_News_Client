@@ -8,34 +8,32 @@ const footerLinks = [
   ];
 
 const Footer = () => {
-return (
-    <footer className="py-5 sm:px-10 px-5">
-      <div className="screen-max-width">
-        <div className="flex md:flex-row flex-col md:items-center justify-between">
-          {footerLinks.map(({ label, url }) => (
+  return (
+    <footer className="py-5 bg-gray-200 text-gray-600">
+      <hr /> {/* Added top border */}
+      <p className="text-xs font-semibold mb-2">Connect with me:</p>
+      <div className="flex justify-between items-center">
+        <div className="text-xs font-semibold mb-2">Connect with me:</div>
+        <div className="flex items-center">
+          {footerLinks.map(({ label }) => (
             <a
               key={label}
-              href={url}
+              href={footerLinks.find((link) => link.label === label).url}
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-gray text-xs mx-2"
-              style={{
-                marginLeft: '100px',
-                marginRight: '10px',
-                background: '#ccc', // Removed the conditional statement
-                color: 'black',
-                border: 'none',
-                padding: '5px 10px',
-                cursor: 'pointer',
-              }}
+              className="text-gray-600 hover:text-blue-600 mr-4 transition duration-300"
+              style={{marginRight: '150px'}}
             >
               {label}
             </a>
           ))}
         </div>
+        <div className="text-right">
+          <p className="text-xs font-semibold mb-2">&copy; 2025 Sidharth Jain</p>
+        </div>
       </div>
     </footer>
-)
-}
+  );
+};
 
 export default Footer;
