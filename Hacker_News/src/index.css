@@ -25,12 +25,17 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
+  /* display: flex; */
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
   font-family: sans-serif;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 h1 {
   font-size: 3.2em;

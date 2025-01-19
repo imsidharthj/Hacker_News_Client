@@ -9,28 +9,22 @@ const footerLinks = [
 
 const Footer = () => {
   return (
-    <footer className="py-5 bg-gray-200 text-gray-600">
-      <hr /> {/* Added top border */}
-      <p className="text-xs font-semibold mb-2">Connect with me:</p>
-      <div className="flex justify-between items-center">
-        <div className="text-xs font-semibold mb-2">Connect with me:</div>
-        <div className="flex items-center">
-          {footerLinks.map(({ label }) => (
+    <footer className="w-full bg-gray-800 text-gray-200 py-6">
+      <div className="max-w-4xl mx-auto flex flex-col items-center space-y-4">
+        <div className="flex space-x-4">
+          {footerLinks.map(({ label, url }) => (
             <a
               key={label}
-              href={footerLinks.find((link) => link.label === label).url}
+              href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-blue-600 mr-4 transition duration-300"
-              style={{marginRight: '150px'}}
+              className="hover:text-blue-400 transition"
             >
               {label}
             </a>
           ))}
         </div>
-        <div className="text-right">
-          <p className="text-xs font-semibold mb-2">&copy; 2025 Sidharth Jain</p>
-        </div>
+        <p className="text-sm">&copy; 2025 Sidharth Jain</p>
       </div>
     </footer>
   );

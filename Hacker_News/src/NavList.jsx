@@ -77,26 +77,23 @@ function NavBar() {
   };
   
   return (
-    <div>
+    <div className="w-full">
       {/* Navigation Links */}
-      <nav style={{ marginBottom: '20px' }}>
+      <nav className="w-full bg-white shadow py-4 mb-6">
+      <div className="flex justify-center space-x-4">
         {navList.map((item) => (
           <button
             key={item.label}
             onClick={() => handleNavClick(item.label)}
-            style={{
-              marginRight: '10px',
-              background: item.label === selectedLabel ? '#007bff' : '#ccc',
-              color: '#fff',
-              border: 'none',
-              padding: '5px 10px',
-              cursor: 'pointer',
-            }}
+            className={`px-4 py-2 rounded ${
+              item.label === selectedLabel ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'
+            } hover:bg-blue-500 hover:text-white transition`}
           >
             {item.label}
           </button>
         ))}
-      </nav>
+      </div>
+    </nav>
 
       {/* Display Loading, Error, or Data */}
       <div>
@@ -112,9 +109,10 @@ function NavBar() {
                 <p><strong>Score:</strong> {article.score}</p>
                 <p><strong>By:</strong> {article.by}</p>
                 <p>
-                  <a href={article.url} target="_blank" rel="noopener noreferrer">
+                  <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
                     Read more
                   </a>
+                  <hr/>
                 </p>
                 {/* <p>Score: {article.score}</p>
                 <p>By: {article.by}</p> */}

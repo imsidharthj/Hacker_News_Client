@@ -38,48 +38,36 @@ function App() {
   }
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif', padding: '20px' }}>
+    <div className="font-sans min-h-screen flex flex-col items-center bg-gray-100 text-gray-800">
       <NavBar />
-      <h1 style={{ fontSize: '2.5rem', marginBottom: '20px' }}>Hacker News Top Stories</h1>
-      <ul style={{ listStyleType: 'none', padding: 0 }}>
-        {topStories.map(story => (
-          // <li key={story.id} style={{ margin: '20px 0' }}>
-          <li
-          key={story.id}
-          style={{
-            margin: '20px 0',
-            padding: '20px',
-            border: '1px solid #ddd',
-            borderRadius: '8px',
-            background: '#f9f9f9',
-            transition: 'transform 0.2s',
-          }}
-        >
-          <h2>
-            {/* <a href={story.url} target="_blank" rel="noopener noreferrer" style={{ color: 'black' }}> */}
-            <a
-            href={story.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              textDecoration: 'none',
-              color: '#007bff',
-            }}
-          >
-                {story.title}
-              </a>
-            </h2>
-            {/* <p>By: {story.by}</p>
-            <p>Score: {story.score}</p> */}
-            <p style={{ margin: '5px 0' }}>
-            <strong>By:</strong> {story.by}
-            </p>
-            <p style={{ margin: '5px 0' }}>
-              <strong>Score:</strong> {story.score}
-            </p>
-          </li>
-        ))}
-      </ul>
+      <main className="w-full max-w-4xl mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold mb-6 text-center">Hacker News Top Stories</h1>
+        <ul className="space-y-6">
+          {topStories.map((story) => (
+            <li
+              key={story.id}
+              className="p-6 border border-gray-200 rounded-lg shadow hover:shadow-lg transition"
+            >
+              <h2 className="text-xl font-semibold mb-2">
+                <a
+                  href={story.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  {story.title}
+                </a>
+              </h2>
+              <p className="text-sm text-gray-600">
+                <strong>By:</strong> {story.by}
+              </p>
+              <p className="text-sm text-gray-600">
+                <strong>Score:</strong> {story.score}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </main>
       <Footer />
     </div>
   );
