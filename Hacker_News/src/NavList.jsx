@@ -7,7 +7,7 @@ export const navList = [
   { label: "Change Items", url: "https://hacker-news.firebaseio.com/v0/updates.json?print=pretty" },
 ];
 
-function NavBar() {
+function NavBar({onNavClick}) {
   const [selectedLabel, setSelectedLabel] = useState(null);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -84,7 +84,11 @@ function NavBar() {
         {navList.map((item) => (
           <button
             key={item.label}
-            onClick={() => handleNavClick(item.label)}
+            onClick={() => {
+              handleNavClick(item.label)
+              onNavClick(selectedLabel)
+            }
+            }
             className={`px-4 py-2 rounded ${
               item.label === selectedLabel ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'
             } hover:bg-blue-500 hover:text-white transition`}
