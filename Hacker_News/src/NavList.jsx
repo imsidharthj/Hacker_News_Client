@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import './NavList.css';
 
 export const navList = [
   { label: "All Items", url: "https://hacker-news.firebaseio.com/v0/maxitem.json?print=pretty" },
@@ -79,7 +80,7 @@ function NavBar({onNavClick}) {
   return (
     <div className="w-full">
       {/* Navigation Links */}
-      <nav className="w-full bg-white shadow py-4 mb-6">
+      <nav className="w-full bg-white shadow py-4 mb-6 fixed">
       <div className="flex justify-center space-x-4">
         {navList.map((item) => (
           <button
@@ -100,9 +101,15 @@ function NavBar({onNavClick}) {
     </nav>
 
       {/* Display Loading, Error, or Data */}
-      <div>
+      <div className='pt-20'>
       {/* {!selectedLabel && <p>Welcome! Please select a category to view data.</p>} */}
-        {loading && <p>Loading...</p>}
+        {loading && (
+          <div className="flex justify-center items-center h-20 mb-6">
+            <div className="w-1/2 bg-gray-200 rounded relative overflow-hidden">
+              <div className="absolute top-0 left-0 h-full bg-blue-500 rounded animate-pulse w-0 animate-loading"></div>
+            </div>
+          </div>
+        )}
         {error && <p style={{ color: 'red' }}>Error: {error}</p>}
         {Array.isArray(data) && (
           <ul style={{ color: 'black' }}>
