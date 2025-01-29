@@ -104,10 +104,13 @@ function NavBar({onNavClick}) {
       <div className='pt-20'>
       {/* {!selectedLabel && <p>Welcome! Please select a category to view data.</p>} */}
         {loading && (
-          <div className="flex justify-center items-center h-20 mb-6">
-            <div className="w-1/2 bg-gray-200 rounded relative overflow-hidden">
-              <div className="absolute top-0 left-0 h-full bg-blue-500 rounded animate-pulse w-0 animate-loading"></div>
-            </div>
+          // <div className="flex justify-center items-center h-20 mb-6">
+          //   <div className="w-1/2 bg-gray-200 rounded relative overflow-hidden">
+          //     <div className="absolute top-0 left-0 h-full bg-blue-500 rounded animate-pulse w-0 animate-loading"></div>
+          //   </div>
+          // </div>
+          <div className='loading-container'>
+            <div className='loading-bar'></div>
           </div>
         )}
         {error && <p style={{ color: 'red' }}>Error: {error}</p>}
