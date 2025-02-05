@@ -8,7 +8,7 @@ export const navList = [
   { label: "Change Items", url: "https://hacker-news.firebaseio.com/v0/updates.json?print=pretty" },
 ];
 
-function NavBar({ onNavClick }) {
+function NavBar({ onNavClick, onSearch }) {
   const [selectedLabel, setSelectedLabel] = useState(null);
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -79,7 +79,9 @@ function NavBar({ onNavClick }) {
   };
 
   const handleSearchChange = (event) => {
+    console.log('.....', data)
     setSearchQuery(event.target.value);
+    onSearch(event.target.value)
   };
 
   const filteredData = data
@@ -107,6 +109,22 @@ function NavBar({ onNavClick }) {
               {item.label}
             </button>
           ))}
+        </div>
+
+        {/* Search Bar */}
+        <div>
+          <form>
+            <label htmlFor="search">Search</label>
+              <input
+                type="search"
+                id="search"
+                placeholder="Search Article"
+                className="px-4 py-2 border rounded-lg shadow-sm w-80 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                value={searchQuery}
+                onChange={handleSearchChange}
+                style={{ position: 'absolute', backgroundColor: 'white'}}/>
+              <i style={{ fontSize: '24px' }} className="fa fa-search"></i>
+          </form>
         </div>
       </nav>
 
@@ -139,23 +157,6 @@ function NavBar({ onNavClick }) {
             ))}
           </ul>
         )}
-      </div>
-
-      {/* Search Bar */}
-      <div>
-        <form>
-          <label htmlFor="search">Search</label>
-          <input
-            type="search"
-            id="search"
-            placeholder="Search Article"
-            className="search-box"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            style={{ position: 'absolute', backgroundColor: 'white'}}
-          />
-          <i style={{ fontSize: '24px' }} className="fa fa-search"></i>
-        </form>
       </div>
       <hr />
     </div>

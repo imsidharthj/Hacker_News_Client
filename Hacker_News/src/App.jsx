@@ -81,14 +81,33 @@ function App() {
     setFilteredStories(topStories.slice(0, num));
   };
 
+  // const onSearch = (searchString) => {
+  //   console.log("searchString", topStories)
+  //   const titleSearchFilter = topStories.filter((item)=> item.title.toLowerCase().includes(searchString.toLowerCase()))
+  //   setTopStories(titleSearchFilter)
+  //   console.log('filteredData', titleSearchFilter)
+  // }
+  const onSearch = (searchString) => {
+    if (!searchString) {
+      setFilteredStories(OldApitopStories.slice(0, numArticles));
+    } else {
+      const filteredData = OldApitopStories.filter((item) =>
+        item.title.toLowerCase().includes(searchString.toLowerCase())
+      );
+      setFilteredStories(filteredData);
+    }
+  };
+
   return (
     <div className="font-sans min-h-screen flex flex-col items-center bg-gray-100 text-gray-800">
-      <NavBar onNavClick={navClick}/>
+      <NavBar onNavClick={navClick} onSearch={onSearch}/>
       <main className="w-full max-w-4xl mx-auto px-4 py-8">
         { topStories.length > 0 && <h1 className="text-3xl font-bold mb-6 text-center">Hacker News Top Stories</h1>}
         <div style={{left: 0, position: 'fixed'}}>
           <label htmlFor="numArticles">Number of Stories: </label>
-            <select id="numArticles" value={numArticles} onChange={handleNumArticlesChange} style={{ background: 'white'}}>
+            <select id="numArticles" value={numArticles} onChange={handleNumArticlesChange} style={{ background: 'white'}}
+              className="px-4 py-2 border rounded-lg shadow-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-400"
+            >
               <option value={1}>1</option>
               <option value={3}>3</option>
               <option value={5}>5</option>
